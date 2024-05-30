@@ -14,7 +14,8 @@ public class BallDestroyer : MonoBehaviour
     int imagineScore;
     void Start()
     {
-        scoreText.text = score.ToString();   
+        scoreText.text = score.ToString(); 
+        Invoke("",20);  
     }
 
    
@@ -29,12 +30,16 @@ public class BallDestroyer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         Destroy(other.gameObject);
-        if(player.getPlayerStatus())
+        if(other.tag == "Ball")
         {
-            score += scorePoint;
-            imagineScore+=scorePoint;
-            scoreText.text = score.ToString();    
+            if(player.getPlayerStatus())
+            {
+                score += scorePoint;
+                imagineScore+=scorePoint;
+                scoreText.text = score.ToString();    
+            }
         }
+        
     }
 
     public int getScore()

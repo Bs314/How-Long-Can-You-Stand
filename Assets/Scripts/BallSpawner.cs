@@ -19,16 +19,33 @@ public class BallSpawner : MonoBehaviour
     float timeLeft;
     int level = 1;
     int oldLevel;
-
+    bool animationDone =false;
     void Start()
     {
         oldLevel = level;
         level = 1;
         timeLeft = respawnTime; 
+        Invoke("AnimationController", 30f);
     }
 
     
     void Update()
+    {
+
+     if(animationDone)
+     {
+        BallRespawner();
+     }   
+        
+    }
+
+
+    void AnimationController()
+    {
+        animationDone = true;
+    }
+
+    void BallRespawner()
     {
         playerAlive = player.getPlayerStatus();
         level = score.getLevel();
@@ -68,7 +85,6 @@ public class BallSpawner : MonoBehaviour
                 timeLeft = respawnTime;
             }
         }
-        
     }
 
 }

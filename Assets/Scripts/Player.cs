@@ -45,10 +45,14 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag == "Ball")
         {
+            Debug.Log("Ball");
             GetComponent<Rigidbody>().freezeRotation = false;
             playerAlive = false;
         }
     }
+
+
+    
 
     public bool getPlayerStatus()
     {
