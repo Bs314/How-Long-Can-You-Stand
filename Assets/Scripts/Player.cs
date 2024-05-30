@@ -9,13 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] Transform rightLimit;
     [SerializeField] Transform leftLimit;
+    [SerializeField] GameObject button;
     float horizontalMove;
     bool playerAlive = true;
     void Start()
     {
         Player abc = GetComponent<Player>();
-        Debug.Log(leftLimit.position.x);
-        Debug.Log(rightLimit.position.x);
     }
 
     
@@ -48,6 +47,7 @@ public class Player : MonoBehaviour
             Debug.Log("Ball");
             GetComponent<Rigidbody>().freezeRotation = false;
             playerAlive = false;
+            button.SetActive(true);
         }
     }
 
