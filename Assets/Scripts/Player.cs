@@ -10,9 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] Transform rightLimit;
     [SerializeField] Transform leftLimit;
     float horizontalMove;
-    
+    bool playerAlive = true;
     void Start()
     {
+        Player abc = GetComponent<Player>();
         Debug.Log(leftLimit.position.x);
         Debug.Log(rightLimit.position.x);
     }
@@ -20,7 +21,11 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        Move();
+        if(playerAlive)
+        {
+            Move();
+        }
+        
         
     }
 
@@ -35,5 +40,18 @@ public class Player : MonoBehaviour
         {
             transform.Translate(new Vector3(horizontalMove * moveSpeed * Time.deltaTime,0,0));
         }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.tag == "Ball")
+        {
+            GetComponent<Rigidbody>().freezeRotation = false;
+            playerAlive = false;
+        }
+    }
+
+    public bool getPlayerStatus()
+    {
+        return playerAlive;
     }
 }
