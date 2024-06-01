@@ -75,7 +75,7 @@ public class BallSpawner : MonoBehaviour
                     break;
                     case 3: randomPos = loc3;   
                     break;
-                    
+                    //Debug.Log("lkjşlkjş");
                     default:
                     break;
                 }
